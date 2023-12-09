@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-const int NUM_ESTUDIANTES = 2;
+const int NUM_ESTUDIANTES = 20;
 const int NUM_CALIFICACIONES = 3;
 
 char nombres[NUM_ESTUDIANTES][50];
