@@ -1,0 +1,65 @@
+//bienvenido a "pan de queso" Programa  de Nomina para estudiantes, evaluacion 2do corte.
+#include <stdio.h>
+#include <string.h>
+
+const int NUM_ESTUDIANTES = 2;
+const int NUM_CALIFICACIONES = 3;
+
+char nombres[NUM_ESTUDIANTES][50];
+int cedulas[NUM_ESTUDIANTES];
+int calificaciones[NUM_ESTUDIANTES][NUM_CALIFICACIONES];
+float promedios[NUM_ESTUDIANTES];
+
+void cargar_nomina_estudiantes() {
+    
+    for (int i = 0; i < NUM_ESTUDIANTES; i++) {
+        printf("Ingrese el nombre del estudiante %d: ", i+1);
+        scanf("%s", nombres[i]);
+        printf("Ingrese la cédula del estudiante %d: ", i+1);
+        scanf("%d", &cedulas[i]);
+    }
+}
+
+void cargar_notas_estudiantes() {
+    
+    for (int i = 0; i < NUM_ESTUDIANTES; i++) {
+        printf("Ingrese las 3 calificaciones del estudiante %s: ", nombres[i]);
+        for (int j = 0; j < NUM_CALIFICACIONES; j++) {
+            scanf("%d", &calificaciones[i][j]);
+        }
+    }
+}
+
+void calcular_promedio_notas() {
+    
+    for (int i = 0; i < NUM_ESTUDIANTES; i++) {
+        float suma = 0;
+        for (int j = 0; j < NUM_CALIFICACIONES; j++) {
+            suma += calificaciones[i][j];
+        }
+        promedios[i] = suma / NUM_CALIFICACIONES;
+    }
+}
+
+void mostrar_boletin_calificaciones() {
+    
+    printf("Boletín de Calificaciones\n");
+    printf("--------------------------------------------\n");
+    printf("Cédula\tNombre\t\tCalif1\tCalif2\tCalif3\tPromedio\n");
+    for (int i = 0; i < NUM_ESTUDIANTES; i++) {
+        printf("%d\t%s\t\t", cedulas[i], nombres[i]);
+        for (int j = 0; j < NUM_CALIFICACIONES; j++) {
+            printf("%d\t", calificaciones[i][j]);
+        }
+        printf("%f\n", promedios[i]);
+    }
+    printf("--------------------------------------------\n");
+}
+
+int main() {
+    cargar_nomina_estudiantes();
+    cargar_notas_estudiantes();
+    calcular_promedio_notas();
+    mostrar_boletin_calificaciones();
+    return 0;
+}
